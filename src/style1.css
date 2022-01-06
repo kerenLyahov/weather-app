@@ -1,0 +1,71 @@
+.card {
+  width: 38rem;
+  margin-top: 20px;
+  background-image: linear-gradient(
+      rgba(150, 220, 241, 0.5),
+      rgba(32, 160, 245, 0.5)
+    ),
+    url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/024/059/original/background-2.jpg?1641145046);
+  background-size: cover;
+}
+
+.city {
+  margin: 12px 60px 0 30px;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  font-style: italic;
+}
+.full_date,
+.icon_temp_now,
+.description_minmax {
+  margin-left: 18px;
+}
+.full_date {
+  font-size: 19px;
+}
+.icon_temp_now {
+  font-size: 30px;
+  margin-top: 15px;
+}
+.search {
+  margin-top: 18px;
+}
+#humidity,
+#windSpeed {
+  font-size: 15px;
+}
+#humidity {
+  padding: 0 12px 0 32px;
+}
+.windspeed {
+  margin: 0;
+  padding: 0;
+}
+
+#windSpeed {
+  padding: 0 40px 0 0;
+  text-align: right;
+}
+
+#todayDescription,
+.weather-icon {
+  text-align: center;
+}
+.next5days {
+  margin: 40px 0 10px 0;
+  text-align: center;
+}
+.temp_minmax {
+  display: block;
+}
+
+#celsius,
+#fahrenheit {
+  font-size: 20px;
+}
+
+#celsius:hover,
+#fahrenheit:hover {
+  cursor: pointer;
+}
