@@ -64,13 +64,32 @@ function showTemp(response) {
   windspeed.innerHTML = response.data.wind.speed;
   let humidity = document.querySelector("#humidity_number");
   humidity.innerHTML = response.data.main.humidity;
+  //console.log(response.data.weather);
+}
+function tempUnit() {
+  //let unit = "metric";
+  let celsius = document.querySelector("#celsius").innerHTML;
+  let fahrenheit = document.querySelector("#fahrenheit").innerHTML;
+  celsius.addEventListener("click", function () {
+    unit === `metric`;
+    console.log(5);
+  });
+  fahrenheit.addEventListener("click", function () {
+    unit === `imperial`;
+    console.log(6);
+  });
 }
 
 function weatherData() {
   let unit = `metric`;
   let apiKey = `307efdb71bc67507048c93662d7db9da`;
-  let city = document.querySelector("#city-display").innerHTML;
+  city = document.querySelector("#city-display").innerHTML;
+
+  //tempUnit();
+  //console.log(unit);
+
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
+  // console.log(apiURL);
   axios.get(apiURL).then(showTemp);
 }
 
@@ -93,6 +112,8 @@ function showPosition(position) {
   let unit = "metric";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${apiKey}
   `;
+
+  console.log(apiURL);
   axios.get(apiURL).then(showTemp);
   axios.get(apiURL).then(showCurrentcity);
 }
@@ -110,3 +131,11 @@ mainCity.addEventListener("submit", searchCity);
 
 let button = document.querySelector("#currentLocation");
 button.addEventListener("click", getApiPosition);
+
+// let celsius = document.querySelector("#celsius");
+// let fahrenheit = document.querySelector("#fahrenheit");
+
+// celsius.addEventListener("click", F_to_C);
+// fahrenheit.addEventListener("click", C_to_F);
+
+// console.log(apiURL);
