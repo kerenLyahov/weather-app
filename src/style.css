@@ -35,12 +35,26 @@ body {
 .search {
   margin-top: 18px;
 }
+#formSubmit {
+  padding: 1px 9.5px;
+}
+
+#formSubmit,
+#city-input,
+#currentLocation {
+  background-color: #ffedd8;
+  border-radius: 7px;
+}
+#currentLocation {
+  font-size: 16px;
+  margin: 0px 0 0px 18px;
+}
 #humidity,
 #windSpeed {
   font-size: 15px;
 }
 #humidity {
-  padding: 0 12px 0 32px;
+  padding: 18px 15px 0 0;
 }
 .windspeed {
   margin: 0;
