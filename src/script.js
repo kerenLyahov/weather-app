@@ -64,16 +64,35 @@ function showTemp(response) {
   windspeed.innerHTML = response.data.wind.speed;
   let humidity = document.querySelector("#humidity_number");
   humidity.innerHTML = response.data.main.humidity;
-  let date = new Date();
-  console.log(date);
-  let sunrise = document.querySelector("#sunrise_number");
-  // sunrise.innerHTML = date(response.data.sys.sunrise * 1000);
-  console.log(response.data.sys.sunrise * 1000);
-  let sunrise_time = date(response.data.sys.sunrise * 1000);
-  console.log(sunrise_time);
-  let sunset = document.querySelector("#sunset_number");
-  //console.log(date(response.data.sys.sunset * 1000));
-  //sunset.innerHTML = date(response.data.sys.sunset * 1000);
+
+  // update sunrise time
+  let sunriseTime = new Date(response.data.sys.sunrise * 1000);
+  console.log(sunriseTime);
+  let sunriseHours = sunriseTime.getHours(response.data.sys.sunrise * 1000);
+  console.log(sunriseHours);
+  console.log(sunriseTime.getHours(sunriseTime));
+  if (sunriseHours < 10) {
+    sunriseHours = `0${sunriseHours}`;
+  }
+  let sunriseMinutes = sunriseTime.getMinutes(sunriseTime);
+  if (sunriseMinutes < 10) {
+    sunriseMinutes = `0${sunriseMinutes}`;
+  }
+  let sunrise = `${sunriseHours}:${sunriseMinutes}`;
+  document.querySelector("#sunrise_number").innerHTML = sunrise;
+  // update sunset time
+  let sunsetTime = new Date(response.data.sys.sunset * 1000);
+  let sunsetHours = sunsetTime.getHours(sunsetTime);
+  if (sunsetHours < 10) {
+    sunsetHours = `0${hours}`;
+  }
+  let sunsetMinutes = sunsetTime.getMinutes(sunsetTime);
+  if (sunsetMinutes < 10) {
+    sunsetMinutes = `0${sunsetMinutes}`;
+  }
+
+  let sunset = `${sunsetHours}:${sunsetMinutes}`;
+  document.querySelector("#sunset_number").innerHTML = sunset;
 }
 // function tempUnit() {
 
