@@ -65,10 +65,15 @@ function showTemp(response) {
   let humidity = document.querySelector("#humidity_number");
   humidity.innerHTML = response.data.main.humidity;
   let date = new Date();
+  console.log(date);
   let sunrise = document.querySelector("#sunrise_number");
-  sunrise.innerHTML = date(response.data.sys.sunrise / 1000);
+  // sunrise.innerHTML = date(response.data.sys.sunrise * 1000);
+  console.log(response.data.sys.sunrise * 1000);
+  let sunrise_time = date(response.data.sys.sunrise * 1000);
+  console.log(sunrise_time);
   let sunset = document.querySelector("#sunset_number");
-  sunset.innerHTML = date(response.data.sys.sunset / 1000);
+  //console.log(date(response.data.sys.sunset * 1000));
+  //sunset.innerHTML = date(response.data.sys.sunset * 1000);
 }
 // function tempUnit() {
 
@@ -117,7 +122,7 @@ function showPosition(position) {
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${apiKey}
   `;
 
-  console.log(apiURL);
+  // console.log(apiURL);
   axios.get(apiURL).then(showTemp);
   axios.get(apiURL).then(showCurrentcity);
 }
