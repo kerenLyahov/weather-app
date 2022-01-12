@@ -33,53 +33,54 @@
 
     <title>Weather</title>
   </head>
+
   <body>
     <div class="container">
-      <div class="card">
-        <div class="row">
-          <div class="col city" id="city-display">Jerusalem</div>
-          <div class="col search">
-            <form id="search-city-form">
-              <input
-                type="text"
-                id="city-input"
-                placeholder=" Enter a city"
-                size="15"
-              />
-              <input type="submit" value="search" id="formSubmit" />
-            </form>
+      <div class="row">
+        <div class="col city" id="city-display">Jerusalem</div>
+        <div class="col search">
+          <form id="search-city-form">
+            <input
+              type="text"
+              id="city-input"
+              placeholder=" Enter a city"
+              size="15"
+            />
+            <input type="submit" value="search" id="formSubmit" />
+          </form>
+        </div>
+      </div>
+
+      <div class="row full_date">
+        <div class="col-3" id="today-day">null</div>
+        <div class="col-4" id="today-date">null</div>
+        <div class="col" id="today-time">null</div>
+        <div class="col">
+          <button id="currentLocation">current</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-7 tempDescription">
+          <div class="row icon_temp_now">
+            <div class="col-5 weather-icon">
+              <i class="far fa-sun"></i>
+            </div>
+            <div class="col" id="temp_now">23°C</div>
+            <div class="col">
+              <span id="celsius">°C</span> | <span id="fahrenheit">°F</span>
+            </div>
+
+            <div class="row">
+              <div class="col-6" id="todayDescription">Sunny</div>
+              <div class="col todayMinMax">
+                <spam id="todayMax">26</spam>° / <spam id="todayMin">14</spam> °
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="row full_date">
-          <div class="col-3" id="today-day">null</div>
-          <div class="col-4" id="today-date">null</div>
-          <div class="col" id="today-time">null</div>
-          <div class="col">
-            <button id="currentLocation">current</button>
-          </div>
-        </div>
-
-        <div class="row icon_temp_now">
-          <div class="col weather-icon">
-            <!--maybe later changed into transperent image needs if(?) statment-->
-            <i class="far fa-sun"></i>
-            <!-- <i class="fas fa-bolt"></i> -->
-            <!-- <i class="fas fa-wind"></i> -->
-            <!-- <i class="fas fa-cloud"></i> -->
-            <!-- <i class="fas fa-temperature-low"></i> -->
-            <!-- <i class="fas fa-temperature-high"></i> -->
-            <!-- <i class="fas fa-cloud-showers-heavy"></i> -->
-            <!-- <i class="fas fa-cloud-sun-rain"></i> -->
-            <!-- <i class="far fa-snowflake"></i> -->
-            <!-- <i class="fas fa-cloud-sun"></i> -->
-            <!-- <i class="fas fa-cloud-sun-rain"></i> -->
-          </div>
-          <div class="col" id="temp_now">23°C</div>
-          <div class="col">
-            <span id="celsius">°C</span> | <span id="fahrenheit">°F</span>
-          </div>
-
+        <div class="col paremeters">
           <div class="col" id="humidity">
             humidity: <span id="humidity_number">52</span>%
           </div>
@@ -90,50 +91,44 @@
             </div>
           </div>
         </div>
-        <div class="row description_minmax">
-          <div class="col-3" id="todayDescription">Sunny</div>
-          <div class="col minmax">
-            <spam id="todayMax">26</spam>° / <spam id="todayMin">14</spam> °
+      </div>
+
+      <div class="row next5days">
+        <div class="col">
+          <span id="day1">Monday</span>
+          <div class="row icon">
+            <i class="far fa-sun"></i>
           </div>
+          <div class="row temp_minmax">24°/13°</div>
         </div>
 
-        <div class="row next5days">
-          <div class="col">
-            <span id="day1">Monday</span>
-            <div class="row icon">
-              <i class="far fa-sun"></i>
-            </div>
-            <div class="row temp_minmax">24°/13°</div>
+        <div class="col">
+          <span id="day2">Tuesday</span>
+          <div class="row icon">
+            <i class="far fa-sun"></i>
           </div>
-
-          <div class="col">
-            <span id="day2">Tuesday</span>
-            <div class="row icon">
-              <i class="far fa-sun"></i>
-            </div>
-            <div class="row temp_minmax">24°/13°</div>
+          <div class="row temp_minmax">24°/13°</div>
+        </div>
+        <div class="col">
+          <span id="day3">Wednesday</span>
+          <div class="row icon">
+            <i class="far fa-sun"></i>
           </div>
-          <div class="col">
-            <span id="day3">Wednesday</span>
-            <div class="row icon">
-              <i class="far fa-sun"></i>
-            </div>
-            <div class="row temp_minmax">24°/13°</div>
+          <div class="row temp_minmax">24°/13°</div>
+        </div>
+        <div class="col">
+          <span id="day4">Thursday</span>
+          <div class="row icon">
+            <i class="far fa-sun"></i>
           </div>
-          <div class="col">
-            <span id="day4">Thursday</span>
-            <div class="row icon">
-              <i class="far fa-sun"></i>
-            </div>
-            <div class="row temp_minmax">24°/13°</div>
+          <div class="row temp_minmax">24°/13°</div>
+        </div>
+        <div class="col">
+          <span id="day5">Friday</span>
+          <div class="row icon">
+            <i class="far fa-sun"></i>
           </div>
-          <div class="col">
-            <span id="day5">Friday</span>
-            <div class="row icon">
-              <i class="far fa-sun"></i>
-            </div>
-            <div class="row temp_minmax">24°/13°</div>
-          </div>
+          <div class="row temp_minmax">24°/13°</div>
         </div>
       </div>
     </div>
@@ -142,8 +137,10 @@
         href="https://github.com/kerenLyahov/weather-app"
         target="_blank"
         rel="noopener noreferrer"
-        >Open-source code</a
+        id="linkToGit"
       >
+        Open-source code
+      </a>
       by Keren Lyahovchook
     </div>
     <script src="src/script.js"></script>
