@@ -67,10 +67,7 @@ function showTemp(response) {
 
   // update sunrise time
   let sunriseTime = new Date(response.data.sys.sunrise * 1000);
-  console.log(sunriseTime);
   let sunriseHours = sunriseTime.getHours(response.data.sys.sunrise * 1000);
-  console.log(sunriseHours);
-  console.log(sunriseTime.getHours(sunriseTime));
   if (sunriseHours < 10) {
     sunriseHours = `0${sunriseHours}`;
   }
@@ -93,6 +90,14 @@ function showTemp(response) {
 
   let sunset = `${sunsetHours}:${sunsetMinutes}`;
   document.querySelector("#sunset_number").innerHTML = sunset;
+}
+function cityNext5Days(response) {
+  let unit = `metric`;
+  let apiKey = `307efdb71bc67507048c93662d7db9da`;
+  let lat = response.data.coord.lat;
+  let lon = response.data.coord.lon;
+  let apiURLNext5Days = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=current,hourly,minutely&appid=${apiKey}`;
+  axios.get(apiURLNext5Days).then(next5DaysData);
 }
 // function tempUnit() {
 
@@ -118,7 +123,24 @@ function weatherData() {
 
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
   console.log(apiURL);
+
   axios.get(apiURL).then(showTemp);
+  axios.get(apiURL).then(cityNext5Days);
+}
+function next5DaysData(response) {
+  for (let i = 1; i < 6; i++) {
+    let minTemp = Math.round(response.data.daily[`${i}`].temp.min);
+    let maxTemp = Math.round(response.data.daily[`${i}`].temp.max);
+    let temp = `${maxTemp}° / ${minTemp}°`;
+    document.querySelector(`.MinMax${i}`).innerHTML = temp;
+  }
+}
+
+function showWeatherNext5Days() {
+  let unit = `metric`;
+  let apiKey = `307efdb71bc67507048c93662d7db9da`;
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=31.769&lon=35.2163&units=${unit}&exclude=current,hourly,minutely&appid=${apiKey}`;
+  axios.get(apiURL).then(next5DaysData);
 }
 
 function searchCity(event) {
@@ -128,6 +150,7 @@ function searchCity(event) {
   if (cityName !== "") {
     document.querySelector("#city-display").innerHTML = city.value;
   }
+
   weatherData();
 }
 function showCurrentcity(response) {
@@ -141,7 +164,9 @@ function showPosition(position) {
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${apiKey}
   `;
 
-  // console.log(apiURL);
+  let apiURLNext5Days = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=current,hourly,minutely&appid=${apiKey}`;
+  axios.get(apiURLNext5Days).then(next5DaysData);
+
   axios.get(apiURL).then(showTemp);
   axios.get(apiURL).then(showCurrentcity);
 }
@@ -153,6 +178,7 @@ function getApiPosition() {
 todayDate();
 
 weatherData();
+showWeatherNext5Days();
 
 let mainCity = document.querySelector("#search-city-form");
 mainCity.addEventListener("submit", searchCity);

@@ -20,6 +20,7 @@ body {
   font-weight: 600;
   font-size: 30px;
   font-style: italic;
+  text-transform: capitalize;
 }
 .full_date,
 .description_minmax {
@@ -81,6 +82,8 @@ body {
 #todayDescription,
 .weather-icon {
   padding: 0;
+
+  text-transform: capitalize;
 }
 .todayMinMax {
   text-align: left;
@@ -90,7 +93,11 @@ body {
   text-align: center;
   padding-bottom: 10px;
 }
-.temp_minmax {
+.MinMax1,
+.MinMax2,
+.MinMax3,
+.MinMax4,
+.MinMax5 {
   display: block;
 }
 
