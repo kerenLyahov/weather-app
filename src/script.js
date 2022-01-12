@@ -64,21 +64,25 @@ function showTemp(response) {
   windspeed.innerHTML = response.data.wind.speed;
   let humidity = document.querySelector("#humidity_number");
   humidity.innerHTML = response.data.main.humidity;
-  //console.log(response.data.weather);
+  let date = new Date();
+  let sunrise = document.querySelector("#sunrise_number");
+  sunrise.innerHTML = date(response.data.sys.sunrise / 1000);
+  let sunset = document.querySelector("#sunset_number");
+  sunset.innerHTML = date(response.data.sys.sunset / 1000);
 }
-function tempUnit() {
-  //let unit = "metric";
-  let celsius = document.querySelector("#celsius").innerHTML;
-  let fahrenheit = document.querySelector("#fahrenheit").innerHTML;
-  celsius.addEventListener("click", function () {
-    unit === `metric`;
-    console.log(5);
-  });
-  fahrenheit.addEventListener("click", function () {
-    unit === `imperial`;
-    console.log(6);
-  });
-}
+// function tempUnit() {
+
+//   let celsius = document.querySelector("#celsius").innerHTML;
+//   let fahrenheit = document.querySelector("#fahrenheit").innerHTML;
+//   celsius.addEventListener("click", function () {
+//     unit === `metric`;
+//     console.log(5);
+//   });
+//   fahrenheit.addEventListener("click", function () {
+//     unit === `imperial`;
+//     console.log(6);
+//   });
+// }
 
 function weatherData() {
   let unit = `metric`;
@@ -89,7 +93,7 @@ function weatherData() {
   //console.log(unit);
 
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
-  // console.log(apiURL);
+  console.log(apiURL);
   axios.get(apiURL).then(showTemp);
 }
 

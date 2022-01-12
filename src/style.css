@@ -62,12 +62,16 @@ body {
   text-align: right;
 }
 
-.windspeed {
+.windspeed,
+.sunrise,
+.sunset {
   margin: 0;
   padding: 0;
 }
 
-#windSpeed {
+#windSpeed,
+#sunrise,
+#sunset {
   padding: 0 40px 0 0;
   text-align: right;
 }

@@ -36,6 +36,7 @@
 
   <body>
     <div class="container">
+      <!-- city name -->
       <div class="row">
         <div class="col city" id="city-display">Jerusalem</div>
         <div class="col search">
@@ -50,7 +51,7 @@
           </form>
         </div>
       </div>
-
+      <!-- full date + button to current city -->
       <div class="row full_date">
         <div class="col-3" id="today-day">null</div>
         <div class="col-4" id="today-date">null</div>
@@ -60,6 +61,7 @@
         </div>
       </div>
 
+      <!-- temperature now+ description -->
       <div class="row">
         <div class="col-7 tempDescription">
           <div class="row icon_temp_now">
@@ -90,9 +92,19 @@
               <span id="winSpeed_number">23</span> m/s
             </div>
           </div>
+          <div class="row sunrise">
+            <div class="col" id="sunrise">
+              sunrise: <span id="sunrise_number">05:45</span>
+            </div>
+          </div>
+          <div class="row sunset">
+            <div class="col" id="sunset">
+              sunset: <span id="sunset_number">19:53</span>
+            </div>
+          </div>
         </div>
       </div>
-
+      <!-- temperature for the next 5 days -->
       <div class="row next5days">
         <div class="col">
           <span id="day1">Monday</span>
