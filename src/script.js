@@ -87,9 +87,19 @@ function showTemp(response) {
   if (sunsetMinutes < 10) {
     sunsetMinutes = `0${sunsetMinutes}`;
   }
-
   let sunset = `${sunsetHours}:${sunsetMinutes}`;
   document.querySelector("#sunset_number").innerHTML = sunset;
+  //weather icon
+  let iconElement = document.querySelector(".weather-icon");
+  let iconID = response.data.weather[0].icon;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${iconID}@2x.png`
+  );
+  iconElement.setAttribute(
+    "alt",
+    `icon of ${response.data.weather[0].description}`
+  );
 }
 function cityNext5Days(response) {
   let unit = `metric`;
@@ -117,13 +127,7 @@ function weatherData() {
   let unit = `metric`;
   let apiKey = `307efdb71bc67507048c93662d7db9da`;
   city = document.querySelector("#city-display").innerHTML;
-
-  //tempUnit();
-  //console.log(unit);
-
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
-  console.log(apiURL);
-
   axios.get(apiURL).then(showTemp);
   axios.get(apiURL).then(cityNext5Days);
 }
@@ -133,6 +137,17 @@ function next5DaysData(response) {
     let maxTemp = Math.round(response.data.daily[`${i}`].temp.max);
     let temp = `${maxTemp}° / ${minTemp}°`;
     document.querySelector(`.MinMax${i}`).innerHTML = temp;
+
+    let iconElement = document.querySelector(`.icon${i}`);
+    let iconID = response.data.daily[`${i}`].weather[0].icon;
+    iconElement.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${iconID}@2x.png`
+    );
+    iconElement.setAttribute(
+      "alt",
+      `icon of ${response.data.daily[`${i}`].weather[0].description}`
+    );
   }
 }
 
@@ -191,5 +206,3 @@ button.addEventListener("click", getApiPosition);
 
 // celsius.addEventListener("click", F_to_C);
 // fahrenheit.addEventListener("click", C_to_F);
-
-// console.log(apiURL);

@@ -63,25 +63,32 @@
 
       <!-- temperature now+ description -->
       <div class="row">
-        <div class="col-7 tempDescription">
-          <div class="row icon_temp_now">
-            <div class="col-5 weather-icon">
-              <i class="far fa-sun"></i>
-            </div>
-            <div class="col" id="temp_now">23°C</div>
+        <div class="col description">
+          <div class="row">
             <div class="col">
-              <span id="celsius">°C</span> | <span id="fahrenheit">°F</span>
+              <img
+                class="weather-icon"
+                src="http://openweathermap.org/img/wn/10d@2x.png"
+                alt="weather icon"
+              />
             </div>
-
             <div class="row">
-              <div class="col-6" id="todayDescription">Sunny</div>
-              <div class="col todayMinMax">
-                <spam id="todayMax">26</spam>° / <spam id="todayMin">14</spam> °
-              </div>
+              <div class="col" id="todayDescription">Sunny</div>
             </div>
           </div>
         </div>
 
+        <div class="col tempUnits">
+          <div class="col">
+            <span id="temp_now">23°C</span>
+            <span id="celsius">°C</span> | <span id="fahrenheit">°F</span>
+          </div>
+          <div class="row">
+            <div class="col todayMinMax">
+              <spam id="todayMax">26</spam>° / <spam id="todayMin">14</spam> °
+            </div>
+          </div>
+        </div>
         <div class="col paremeters">
           <div class="col" id="humidity">
             Humidity: <span id="humidity_number">52</span>%
@@ -108,37 +115,57 @@
       <div class="row next5days">
         <div class="col">
           <span id="day1">Monday</span>
-          <div class="row icon">
-            <i class="far fa-sun"></i>
+          <div class="row">
+            <img
+              class="icon1"
+              src="http://openweathermap.org/img/wn/10d@2x.png"
+              alt="weather icon"
+            />
           </div>
           <div class="row MinMax1">24°/13°</div>
         </div>
 
         <div class="col">
           <span id="day2">Tuesday</span>
-          <div class="row icon">
-            <i class="far fa-sun"></i>
+          <div class="row">
+            <img
+              class="icon2"
+              src="http://openweathermap.org/img/wn/10d@2x.png"
+              alt="weather icon"
+            />
           </div>
           <div class="row MinMax2">24°/13°</div>
         </div>
         <div class="col">
           <span id="day3">Wednesday</span>
-          <div class="row icon">
-            <i class="far fa-sun"></i>
+          <div class="row">
+            <img
+              class="icon3"
+              src="http://openweathermap.org/img/wn/10d@2x.png"
+              alt="weather icon"
+            />
           </div>
           <div class="row MinMax3">24°/13°</div>
         </div>
         <div class="col">
           <span id="day4">Thursday</span>
-          <div class="row icon">
-            <i class="far fa-sun"></i>
+          <div class="row">
+            <img
+              class="icon4"
+              src="http://openweathermap.org/img/wn/10d@2x.png"
+              alt="weather icon"
+            />
           </div>
           <div class="row MinMax4">24°/13°</div>
         </div>
         <div class="col">
           <span id="day5">Friday</span>
-          <div class="row icon">
-            <i class="far fa-sun"></i>
+          <div class="row">
+            <img
+              class="icon5"
+              src="http://openweathermap.org/img/wn/10d@2x.png"
+              alt="weather icon"
+            />
           </div>
           <div class="row MinMax5">24°/13°</div>
         </div>

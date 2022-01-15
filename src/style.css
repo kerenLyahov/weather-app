@@ -7,7 +7,7 @@ body {
   margin-top: 20px;
   background-image: linear-gradient(
       rgba(150, 220, 241, 0.5),
-      rgba(32, 160, 245, 0.5)
+      rgba(32, 160, 245, 0.25)
     ),
     url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/024/059/original/background-2.jpg?1641145046);
   background-size: cover;
@@ -30,13 +30,23 @@ body {
   font-size: 19px;
 }
 .icon_temp_now {
-  font-size: 30px;
   margin-top: 15px;
-  text-align: center;
 }
 .search {
   margin-top: 18px;
 }
+.icon1,
+.icon2,
+.icon3,
+.icon4,
+.icon5 {
+  margin: -9px 0;
+  width: 60%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #formSubmit {
   padding: 1px 9.5px;
 }
@@ -54,12 +64,23 @@ body {
 #temp_now {
   padding-left: 16px;
   padding-right: 0;
+  font-size: 30px;
+  margin-top: 15px;
+  text-align: center;
 }
 #humidity,
 #windSpeed,
-#todayDescription,
-.todayMinMax {
+#todayDescription {
   font-size: 15px;
+}
+.tempUnits {
+  padding-top: 25px;
+}
+.todayMinMax {
+  padding-top: 10px;
+  padding-left: 25px;
+  font-size: 18px;
+  text-align: left;
 }
 .paremeters {
   padding-top: 25px;
@@ -79,15 +100,15 @@ body {
   text-align: right;
 }
 
-#todayDescription,
 .weather-icon {
-  padding: 0;
-
+  display: block;
+  margin: 0 auto;
+}
+#todayDescription {
+  text-align: center;
   text-transform: capitalize;
 }
-.todayMinMax {
-  text-align: left;
-}
+
 .next5days {
   margin-top: 25px;
   text-align: center;
@@ -100,10 +121,25 @@ body {
 .MinMax5 {
   display: block;
 }
+.MinMax1,
+.MinMax2,
+.MinMax3,
+.MinMax4,
+.MinMax5,
+#day1,
+#day2,
+#day3,
+#day4,
+#day5 {
+  font-size: 13px;
+}
 
 #celsius,
 #fahrenheit {
   font-size: 20px;
+}
+#celsius {
+  padding-left: 30px;
 }
 
 #celsius:hover,
