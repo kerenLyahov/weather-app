@@ -52,6 +52,9 @@ function todayDate() {
 }
 
 function showTemp(response) {
+  //set the name + current temp data
+  let cityNameElement = document.querySelector("#city-display");
+  cityNameElement.innerHTML = response.data.name;
   let currentTemp = document.querySelector("#temp_now");
   currentTemp.innerHTML = `${Math.round(response.data.main.temp)}°C`;
   let todayMinTemp = document.querySelector("#todayMin");
@@ -60,6 +63,9 @@ function showTemp(response) {
   todayMaxTemp.innerHTML = Math.round(response.data.main.temp_max);
   let description = document.querySelector("#todayDescription");
   description.innerHTML = response.data.weather[0].description;
+}
+function parameters(response) {
+  // currenet parameters
   let windspeed = document.querySelector("#winSpeed_number");
   windspeed.innerHTML = response.data.wind.speed;
   let humidity = document.querySelector("#humidity_number");
@@ -101,37 +107,8 @@ function showTemp(response) {
     `icon of ${response.data.weather[0].description}`
   );
 }
-function cityNext5Days(response) {
-  let unit = `metric`;
-  let apiKey = `307efdb71bc67507048c93662d7db9da`;
-  let lat = response.data.coord.lat;
-  let lon = response.data.coord.lon;
-  let apiURLNext5Days = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=current,hourly,minutely&appid=${apiKey}`;
-  axios.get(apiURLNext5Days).then(next5DaysData);
-}
-// function tempUnit() {
-
-//   let celsius = document.querySelector("#celsius").innerHTML;
-//   let fahrenheit = document.querySelector("#fahrenheit").innerHTML;
-//   celsius.addEventListener("click", function () {
-//     unit === `metric`;
-//     console.log(5);
-//   });
-//   fahrenheit.addEventListener("click", function () {
-//     unit === `imperial`;
-//     console.log(6);
-//   });
-// }
-
-function weatherData() {
-  let unit = `metric`;
-  let apiKey = `307efdb71bc67507048c93662d7db9da`;
-  city = document.querySelector("#city-display").innerHTML;
-  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
-  axios.get(apiURL).then(showTemp);
-  axios.get(apiURL).then(cityNext5Days);
-}
 function next5DaysData(response) {
+  //update the temp & icon for the next 5 days
   for (let i = 1; i < 6; i++) {
     let minTemp = Math.round(response.data.daily[`${i}`].temp.min);
     let maxTemp = Math.round(response.data.daily[`${i}`].temp.max);
@@ -150,8 +127,26 @@ function next5DaysData(response) {
     );
   }
 }
+function cityNext5Days(response) {
+  let unit = `metric`;
+  let apiKey = `307efdb71bc67507048c93662d7db9da`;
+  let lat = response.data.coord.lat;
+  let lon = response.data.coord.lon;
+  let apiURLNext5Days = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=current,hourly,minutely&appid=${apiKey}`;
+  axios.get(apiURLNext5Days).then(next5DaysData);
+}
+
+function weatherData(city) {
+  let unit = `metric`;
+  let apiKey = `307efdb71bc67507048c93662d7db9da`;
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
+  axios.get(apiURL).then(showTemp);
+  axios.get(apiURL).then(parameters);
+  axios.get(apiURL).then(cityNext5Days);
+}
 
 function showWeatherNext5Days() {
+  //the next 5 days for Jerusalem
   let unit = `metric`;
   let apiKey = `307efdb71bc67507048c93662d7db9da`;
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=31.769&lon=35.2163&units=${unit}&exclude=current,hourly,minutely&appid=${apiKey}`;
@@ -160,30 +155,24 @@ function showWeatherNext5Days() {
 
 function searchCity(event) {
   event.preventDefault();
-  let city = document.querySelector("#city-input");
-  let cityName = city.value;
-  if (cityName !== "") {
-    document.querySelector("#city-display").innerHTML = city.value;
-  }
+  let cityInputElement = document.querySelector("#city-input");
+  weatherData(cityInputElement.value);
+}
 
-  weatherData();
-}
-function showCurrentcity(response) {
-  document.querySelector("#city-display").innerHTML = response.data.name;
-}
 function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
+
   let apiKey = `307efdb71bc67507048c93662d7db9da`;
   let unit = "metric";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${apiKey}
   `;
 
   let apiURLNext5Days = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=current,hourly,minutely&appid=${apiKey}`;
-  axios.get(apiURLNext5Days).then(next5DaysData);
 
+  axios.get(apiURLNext5Days).then(next5DaysData);
+  axios.get(apiURL).then(parameters);
   axios.get(apiURL).then(showTemp);
-  axios.get(apiURL).then(showCurrentcity);
 }
 
 function getApiPosition() {
@@ -192,7 +181,7 @@ function getApiPosition() {
 
 todayDate();
 
-weatherData();
+weatherData("Jerusalem");
 showWeatherNext5Days();
 
 let mainCity = document.querySelector("#search-city-form");
@@ -200,9 +189,3 @@ mainCity.addEventListener("submit", searchCity);
 
 let button = document.querySelector("#currentLocation");
 button.addEventListener("click", getApiPosition);
-
-// let celsius = document.querySelector("#celsius");
-// let fahrenheit = document.querySelector("#fahrenheit");
-
-// celsius.addEventListener("click", F_to_C);
-// fahrenheit.addEventListener("click", C_to_F);

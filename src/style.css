@@ -1,6 +1,7 @@
 body {
   font-family: "Maitree", serif;
   font-weight: 500;
+  background-color: rgba(255, 236, 214, 0.4);
 }
 .container {
   width: 38rem;
@@ -133,7 +134,14 @@ body {
 #day5 {
   font-size: 13px;
 }
-
+#day1,
+#day2,
+#day3,
+#day4,
+#day5 {
+  padding: 0;
+  margin: 0 12px;
+}
 #celsius,
 #fahrenheit {
   font-size: 20px;
