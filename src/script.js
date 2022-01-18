@@ -56,7 +56,7 @@ function showTemp(response) {
   let cityNameElement = document.querySelector("#city-display");
   cityNameElement.innerHTML = response.data.name;
   let currentTemp = document.querySelector("#temp_now");
-  currentTemp.innerHTML = `${Math.round(response.data.main.temp)}°C`;
+  currentTemp.innerHTML = `${Math.round(response.data.main.temp)} °${scale}`;
   let todayMinTemp = document.querySelector("#todayMin");
   todayMinTemp.innerHTML = Math.round(response.data.main.temp_min);
   let todayMaxTemp = document.querySelector("#todayMax");
@@ -128,7 +128,6 @@ function next5DaysData(response) {
   }
 }
 function cityNext5Days(response) {
-  let unit = `metric`;
   let apiKey = `307efdb71bc67507048c93662d7db9da`;
   let lat = response.data.coord.lat;
   let lon = response.data.coord.lon;
@@ -136,8 +135,7 @@ function cityNext5Days(response) {
   axios.get(apiURLNext5Days).then(next5DaysData);
 }
 
-function weatherData(city) {
-  let unit = `metric`;
+function weatherData(city, unit) {
   let apiKey = `307efdb71bc67507048c93662d7db9da`;
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
   axios.get(apiURL).then(showTemp);
@@ -145,9 +143,7 @@ function weatherData(city) {
   axios.get(apiURL).then(cityNext5Days);
 }
 
-function showWeatherNext5Days() {
-  //the next 5 days for Jerusalem
-  let unit = `metric`;
+function showWeatherNext5Days(unit) {
   let apiKey = `307efdb71bc67507048c93662d7db9da`;
   let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=31.769&lon=35.2163&units=${unit}&exclude=current,hourly,minutely&appid=${apiKey}`;
   axios.get(apiURL).then(next5DaysData);
@@ -156,20 +152,16 @@ function showWeatherNext5Days() {
 function searchCity(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
-  weatherData(cityInputElement.value);
+  weatherData(cityInputElement.value, unit);
 }
 
 function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-
   let apiKey = `307efdb71bc67507048c93662d7db9da`;
-  let unit = "metric";
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${unit}&appid=${apiKey}
   `;
-
   let apiURLNext5Days = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${unit}&exclude=current,hourly,minutely&appid=${apiKey}`;
-
   axios.get(apiURLNext5Days).then(next5DaysData);
   axios.get(apiURL).then(parameters);
   axios.get(apiURL).then(showTemp);
@@ -178,11 +170,34 @@ function showPosition(position) {
 function getApiPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
+let unit = "metric";
+let scale = "C";
+function metricUnit() {
+  unit = "metric";
+  scale = "C";
+  celsius.style.color = "#2f3c4f";
+  fahrenheit.style.color = "#506f86";
+  weatherData(document.querySelector("#city-display").innerHTML, unit);
+}
+function imperialUnit() {
+  unit = "imperial";
+  scale = "F";
+  fahrenheit.style.color = "#2f3c4f";
+  celsius.style.color = "#506f86";
+
+  weatherData(document.querySelector("#city-display").innerHTML, unit);
+}
+
+let celsius = document.querySelector("#celsius");
+let fahrenheit = document.querySelector("#fahrenheit");
+
+celsius.addEventListener("click", metricUnit);
+fahrenheit.addEventListener("click", imperialUnit);
 
 todayDate();
 
-weatherData("Jerusalem");
-showWeatherNext5Days();
+weatherData("Jerusalem", unit);
+showWeatherNext5Days(unit);
 
 let mainCity = document.querySelector("#search-city-form");
 mainCity.addEventListener("submit", searchCity);

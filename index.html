@@ -26,7 +26,7 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Maitree:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Maitree:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/style.css" />
@@ -64,7 +64,7 @@
         </div>
       </div>
 
-      <!-- temperature now+ description -->
+      <!-- temperature now + description + parameters -->
       <div class="row">
         <div class="col description">
           <div class="row iconRow">
@@ -84,7 +84,6 @@
         <div class="col tempUnits">
           <div class="col">
             <span id="temp_now">23°C</span>
-            <span id="celsius">°C</span> | <span id="fahrenheit">°F</span>
           </div>
           <div class="row">
             <div class="col todayMinMax">
@@ -92,7 +91,12 @@
             </div>
           </div>
         </div>
-        <div class="col paremeters">
+
+        <div class="col tempScale">
+          <span id="celsius">°C</span> | <span id="fahrenheit">°F</span>
+        </div>
+
+        <div class="col-4 paremeters">
           <div class="col" id="humidity">
             Humidity: <span id="humidity_number">52</span>%
           </div>
