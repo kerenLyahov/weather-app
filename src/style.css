@@ -3,8 +3,8 @@ body {
   font-weight: 500;
   background-color: rgba(255, 236, 214, 0.4);
 }
-.container {
-  width: 38rem;
+.main {
+  width: 600px;
   margin-top: 20px;
   background-image: linear-gradient(
       rgba(150, 220, 241, 0.5),
@@ -16,7 +16,7 @@ body {
 }
 
 .city {
-  margin: 12px 60px 0 30px;
+  margin: 12px 0 0 30px;
   font-family: "Source Sans 3", sans-serif;
   font-weight: 600;
   font-size: 30px;
@@ -47,20 +47,36 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-
+#search-city-form {
+  float: right;
+}
+#city-input {
+  background-color: #ffedd8;
+  border-radius: 7px;
+  width: 140px;
+}
 #formSubmit {
   padding: 1px 9.5px;
 }
 
 #formSubmit,
-#city-input,
 #currentLocation {
   background-color: #ffedd8;
   border-radius: 7px;
+  width: 70px;
 }
 #currentLocation {
   font-size: 16px;
   margin: 0px 0 0px 18px;
+  float: right;
+}
+#today-day,
+#today-date,
+#today-time {
+  padding-right: 10px;
+}
+.description {
+  padding: 0;
 }
 #temp_now {
   padding-left: 16px;
@@ -74,17 +90,18 @@ body {
 #todayDescription {
   font-size: 15px;
 }
-.tempUnits {
-  padding-top: 25px;
-}
+
 .todayMinMax {
-  padding-top: 10px;
-  padding-left: 25px;
+  padding-left: 30px;
   font-size: 18px;
   text-align: left;
 }
-.paremeters {
-  padding-top: 25px;
+.paremeters,
+.tempUnits {
+  padding: 25px 0 0 0;
+}
+.tempUnits {
+  padding-right: 30px;
 }
 
 .windspeed,
@@ -101,6 +118,15 @@ body {
   text-align: right;
 }
 
+.iconRow {
+  margin: 0 18px 0 0;
+  padding: 0;
+}
+.descriptionRow {
+  margin: 0;
+  padding: 0;
+}
+
 .weather-icon {
   display: block;
   margin: 0 auto;
@@ -108,6 +134,7 @@ body {
 #todayDescription {
   text-align: center;
   text-transform: capitalize;
+  padding: 0;
 }
 
 .next5days {
@@ -147,7 +174,7 @@ body {
   font-size: 20px;
 }
 #celsius {
-  padding-left: 30px;
+  padding-left: 25px;
 }
 
 #celsius:hover,
@@ -155,10 +182,10 @@ body {
   cursor: pointer;
 }
 .opnSrc {
-  text-align: center;
   font-family: "Luxurious Roman", cursive;
+  text-align: center;
   position: relative;
-  margin-right: 290px;
+  padding-right: 290px;
 }
 #linkToGit {
   padding-right: 5px;

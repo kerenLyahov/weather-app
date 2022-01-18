@@ -35,7 +35,7 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container main">
       <!-- city name -->
       <div class="row">
         <div class="col-5 city" id="city-display">Jerusalem</div>
@@ -53,9 +53,12 @@
       </div>
       <!-- full date + button to current city -->
       <div class="row full_date">
-        <div class="col-3" id="today-day">null</div>
-        <div class="col-4" id="today-date">null</div>
-        <div class="col" id="today-time">null</div>
+        <div class="col-8">
+          <span id="today-day"></span>
+          <span id="today-date"></span>
+          <span id="today-time"></span>
+        </div>
+
         <div class="col">
           <button id="currentLocation">current</button>
         </div>
@@ -64,7 +67,7 @@
       <!-- temperature now+ description -->
       <div class="row">
         <div class="col description">
-          <div class="row">
+          <div class="row iconRow">
             <div class="col">
               <img
                 class="weather-icon"
@@ -72,7 +75,7 @@
                 alt="weather icon"
               />
             </div>
-            <div class="row">
+            <div class="row descriptionRow">
               <div class="col" id="todayDescription">Sunny</div>
             </div>
           </div>
@@ -171,6 +174,7 @@
         </div>
       </div>
     </div>
+
     <div class="opnSrc">
       <a
         href="https://github.com/kerenLyahov/weather-app"
@@ -182,6 +186,7 @@
       </a>
       by Keren Lyahovchook
     </div>
+
     <script src="src/script.js"></script>
   </body>
 </html>
